@@ -4,7 +4,7 @@
 # allows overriding certain settings without modifying the Makefile.
 
 # REPO_MANIFESTS_URL="https://github.com/launchbynttdata/launch-common-automation-framework.git"
-# REPO_BRANCH="refs/tags/1.0.0"
+# REPO_BRANCH="refs/tags/1.2.0"
 # REPO_MANIFEST="manifests/terraform_modules/seed/manifest.xml"
 # REPO_URL="https://github.com/launchbynttdata/git-repo.git"
 # REPO_REV="main"
