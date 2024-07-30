@@ -20,6 +20,16 @@ output "name" {
   value       = module.grafana.name
 }
 
+output "endpoint" {
+  description = "Endpoint of the managed grafana instance"
+  value       = module.grafana.endpoint
+}
+
+output "outbound_ip" {
+  description = "Outbound IP of the managed grafana instance if `deterministic_outbound_ip_enabled` is true"
+  value       = module.grafana.outbound_ip
+}
+
 output "resource_group_name" {
   description = "Resource group name of the managed grafana instance"
   value       = module.resource_group.name
