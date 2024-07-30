@@ -20,6 +20,16 @@ output "name" {
   value       = azurerm_dashboard_grafana.grafana.name
 }
 
+output "endpoint" {
+  description = "Endpoint of the managed grafana instance"
+  value       = azurerm_dashboard_grafana.grafana.endpoint
+}
+
+output "outbound_ip" {
+  description = "Outbound IP of the managed grafana instance if `deterministic_outbound_ip_enabled` is true"
+  value       = azurerm_dashboard_grafana.grafana.outbound_ip
+}
+
 output "principal_id" {
   description = "Principal ID of the managed grafana instance"
   value       = azurerm_dashboard_grafana.grafana.identity[0].principal_id
