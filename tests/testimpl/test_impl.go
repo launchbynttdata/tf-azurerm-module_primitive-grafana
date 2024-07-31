@@ -16,10 +16,14 @@ func TestGrafana(t *testing.T, ctx types.TestContext) {
 	}
 
 	resourceId := terraform.Output(t, ctx.TerratestTerraformOptions(), "id")
+	resourceName := terraform.Output(t, ctx.TerratestTerraformOptions(), "name")
+	resourceEndpoint := terraform.Output(t, ctx.TerratestTerraformOptions(), "endpoint")
 	workspaceIds := terraform.OutputList(t, ctx.TerratestTerraformOptions(), "integrated_workspace_ids")
 
 	t.Run("TfOutputsNotEmpty", func(t *testing.T) {
 		assert.NotEmpty(t, resourceId, "Grafana resource ID must not be empty")
+		assert.NotEmpty(t, resourceName, "Grafana resource name must not be empty")
+		assert.NotEmpty(t, resourceEndpoint, "Grafana resource endpoint must not be empty")
 		assert.NotEmpty(t, workspaceIds, "Workspace IDs must not be empty")
 	})
 }
