@@ -126,11 +126,11 @@ variable "deterministic_outbound_ip_enabled" {
 variable "grafana_major_version" {
   description = "Major version of Grafana to deploy"
   type        = string
-  default     = "11"
+  default     = "10"
 
   validation {
-    condition     = contains(["9", "10", "11", "12"], var.grafana_major_version)
-    error_message = "Major version can be one of '9', '10', '11', or '12'"
+    condition     = contains(["9", "10"], var.grafana_major_version)
+    error_message = "Major version can be either '9' or '10'"
   }
 }
 
@@ -143,7 +143,7 @@ variable "public_network_access_enabled" {
 variable "sku" {
   description = "SKU of the managed grafana instance. Possible values are 'Standard' and 'Essential'"
   type        = string
-  default     = "Standard"
+  default     = "Essential"
 
   validation {
     condition     = var.sku == "Standard" || var.sku == "Essential"
