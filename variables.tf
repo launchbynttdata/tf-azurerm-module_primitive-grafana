@@ -43,8 +43,8 @@ variable "grafana_major_version" {
   default     = "10"
 
   validation {
-    condition     = contains(["9", "10"], var.grafana_major_version)
-    error_message = "Major version can be either '9' or '10'"
+    condition     = contains(["9", "10", "11", "12"], var.grafana_major_version)
+    error_message = "Major version can be one of '9', '10', '11', or '12'"
   }
 }
 
