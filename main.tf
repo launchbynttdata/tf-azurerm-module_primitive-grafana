@@ -36,4 +36,9 @@ resource "azurerm_dashboard_grafana" "grafana" {
   }
 
   tags = local.tags
+
+  lifecycle {
+    # Azurerm provider v3 does not support the latest grafana major versions
+    ignore_changes = [grafana_major_version]
+  }
 }
