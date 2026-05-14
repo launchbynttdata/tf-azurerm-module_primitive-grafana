@@ -23,6 +23,7 @@ module "resource_names" {
   cloud_resource_type     = each.value.name
   instance_env            = var.instance_env
   maximum_length          = each.value.max_length
+  instance_resource       = var.instance_resource
 }
 
 module "resource_group" {

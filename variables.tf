@@ -43,8 +43,8 @@ variable "grafana_major_version" {
   default     = "10"
 
   validation {
-    condition     = contains(["9", "10"], var.grafana_major_version)
-    error_message = "Major version can be either '9' or '10'"
+    condition     = can(regex("^[0-9]+$", var.grafana_major_version)) && tonumber(var.grafana_major_version) >= 9
+    error_message = "Major version must be a numeric string with a value of 9 or greater."
   }
 }
 
