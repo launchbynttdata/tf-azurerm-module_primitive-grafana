@@ -136,7 +136,7 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | Location where the managed grafana instance will be created | `string` | n/a | yes |
 | <a name="input_api_key_enabled"></a> [api\_key\_enabled](#input\_api\_key\_enabled) | Whether to enable API keys for the managed grafana instance. Defaults to false | `bool` | `false` | no |
 | <a name="input_deterministic_outbound_ip_enabled"></a> [deterministic\_outbound\_ip\_enabled](#input\_deterministic\_outbound\_ip\_enabled) | Whether to enable deterministic outbound IP for the managed grafana instance. Defaults to false | `bool` | `false` | no |
-| <a name="input_grafana_major_version"></a> [grafana\_major\_version](#input\_grafana\_major\_version) | Major version of Grafana to deploy | `string` | `"10"` | no |
+| <a name="input_grafana_major_version"></a> [grafana\_major\_version](#input\_grafana\_major\_version) | Major version of Grafana to deploy | `string` | `"12"` | no |
 | <a name="input_azure_monitor_workspace_ids"></a> [azure\_monitor\_workspace\_ids](#input\_azure\_monitor\_workspace\_ids) | List of Azure Monitor workspace IDs to integrate with the managed grafana instance | `set(string)` | `[]` | no |
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Whether to enable public network access for the managed grafana instance. Defaults to true | `bool` | `true` | no |
 | <a name="input_sku"></a> [sku](#input\_sku) | SKU of the managed grafana instance. Possible values are 'Standard' and 'Essential' | `string` | `"Standard"` | no |
