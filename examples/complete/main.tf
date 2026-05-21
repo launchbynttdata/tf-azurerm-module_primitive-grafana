@@ -85,9 +85,9 @@ module "grafana" {
   zone_redundancy_enabled           = var.zone_redundancy_enabled
   sku                               = var.sku
 
-  identity_ids = [module.user_assigned_identity.id]
+  identity_ids = var.identity_ids != null ? var.identity_ids : [module.user_assigned_identity.id]
 
-  azure_monitor_workspace_ids = [module.monitor_workspace.id]
+  azure_monitor_workspace_ids = var.azure_monitor_workspace_ids != null ? var.azure_monitor_workspace_ids : toset([module.monitor_workspace.id])
 
   tags = merge(var.tags, { resource_name = module.resource_names["grafana"].standard })
 

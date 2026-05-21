@@ -26,7 +26,7 @@ resource "azurerm_dashboard_grafana" "grafana" {
     for_each = var.azure_monitor_workspace_ids
 
     content {
-      resource_id = azure_monitor_workspace_integrations.key
+      resource_id = azure_monitor_workspace_integrations.value
     }
   }
 

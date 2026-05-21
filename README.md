@@ -1,4 +1,4 @@
-# tf-azurerm-module_primitive-monitor_prometheus
+# tf-azurerm-module_primitive-grafana
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
@@ -31,7 +31,7 @@ Base configuration used for this project is [commitlint-config-conventional (bas
 
 If you are a developer using vscode, [this](https://marketplace.visualstudio.com/items?itemName=joshbolduc.commitlint) plugin may be helpful.
 
-`detect-secrets-hook` prevents new secrets from being introduced into the baseline. TODO: INSERT DOC LINK ABOUT HOOKS
+`detect-secrets-hook` prevents new secrets from being introduced into the baseline. See [Yelp/detect-secrets](https://github.com/Yelp/detect-secrets) for details on how the hook works and how to manage the baseline.
 
 In order for `pre-commit` hooks to work properly
 
@@ -42,7 +42,7 @@ In order for `pre-commit` hooks to work properly
 pre-commit install --hook-type commit-msg
 ```
 
-## To test the resource group module locally
+## To test the grafana primitive module locally
 
 1. For development/enhancements to this module locally, you'll need to install all of its components. This is controlled by the `configure` target in the project's [`Makefile`](./Makefile). Before you can run `configure`, familiarize yourself with the variables in the `Makefile` and ensure they're pointing to the right places.
 
@@ -109,7 +109,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.117.1, < 5.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
 
 ## Providers
 
@@ -148,10 +148,10 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_id"></a> [id](#output\_id) | Resource ID of the managed grafana instance |
-| <a name="output_name"></a> [name](#output\_name) | Name of the managed grafana instance |
-| <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | Endpoint of the managed grafana instance |
-| <a name="output_outbound_ip"></a> [outbound\_ip](#output\_outbound\_ip) | Outbound IP of the managed grafana instance if `deterministic_outbound_ip_enabled` is true |
-| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | Principal ID of the managed grafana instance |
-| <a name="output_integrated_workspace_ids"></a> [integrated\_workspace\_ids](#output\_integrated\_workspace\_ids) | Azure Monitor workspaces integrated with the grafana instance |
+| <a name="output_id"></a> [id](#output\_id) | The ID of the managed Grafana instance. |
+| <a name="output_name"></a> [name](#output\_name) | The name of the managed Grafana instance. |
+| <a name="output_endpoint"></a> [endpoint](#output\_endpoint) | The endpoint URL of the managed Grafana instance. |
+| <a name="output_outbound_ip"></a> [outbound\_ip](#output\_outbound\_ip) | List of outbound IP addresses when deterministic\_outbound\_ip\_enabled is true. |
+| <a name="output_principal_id"></a> [principal\_id](#output\_principal\_id) | The principal ID of the system-assigned or user-assigned managed identity. |
+| <a name="output_integrated_workspace_ids"></a> [integrated\_workspace\_ids](#output\_integrated\_workspace\_ids) | List of Azure Monitor workspace resource IDs integrated with this Grafana instance. |
 <!-- END_TF_DOCS -->

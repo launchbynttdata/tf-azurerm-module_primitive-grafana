@@ -104,7 +104,7 @@ variable "class_env" {
 }
 
 variable "location" {
-  description = "target resource group resource mask"
+  description = "Azure region where the resources will be created (e.g. eastus, westus2)."
   type        = string
   default     = "eastus"
 }
@@ -155,6 +155,24 @@ variable "zone_redundancy_enabled" {
   description = "Whether to enable zone redundancy for the managed grafana instance. Defaults to false"
   type        = bool
   default     = false
+}
+
+variable "identity_ids" {
+  description = <<EOT
+    Optional list of user-assigned managed identity resource IDs to assign to the Grafana instance.
+    If null, the example provisions a user-assigned identity internally and uses it.
+  EOT
+  type        = list(string)
+  default     = null
+}
+
+variable "azure_monitor_workspace_ids" {
+  description = <<EOT
+    Optional set of Azure Monitor workspace resource IDs to integrate with the Grafana instance.
+    If null, the example provisions an Azure Monitor workspace internally and uses it.
+  EOT
+  type        = set(string)
+  default     = null
 }
 
 variable "tags" {

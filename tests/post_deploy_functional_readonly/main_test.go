@@ -33,5 +33,5 @@ func TestGrafanaModule(t *testing.T) {
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestGrafana)
+	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestGrafanaReadonly)
 }
