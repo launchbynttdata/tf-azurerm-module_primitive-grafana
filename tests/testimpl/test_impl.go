@@ -71,7 +71,10 @@ func assertGrafanaConfiguration(t *testing.T, ctx types.TestContext) {
 	client, err := armdashboard.NewGrafanaClient(subscriptionId, cred, nil)
 	require.NoError(t, err, "failed to construct Grafana SDK client")
 
-	resp, err := client.Get(context.Background(), resourceGroupName, resourceName, nil)
+	sdkCtx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+
+	resp, err := client.Get(sdkCtx, resourceGroupName, resourceName, nil)
 	require.NoError(t, err, "Grafana Get call must succeed")
 
 	// Cross-check the resource ID returned by the API matches the Terraform output.
@@ -129,7 +132,14 @@ func exerciseGrafanaEndpoint(t *testing.T, ctx types.TestContext) {
 	endpoint := terraform.Output(t, ctx.TerratestTerraformOptions(), "endpoint")
 	require.NotEmpty(t, endpoint, "endpoint output must be present")
 
-	client := &http.Client{Timeout: 30 * time.Second}
+	// Do not follow redirects — Azure Managed Grafana redirects unauthenticated
+	// requests to Azure AD. A redirect response is proof the endpoint is live.
+	client := &http.Client{
+		Timeout: 30 * time.Second,
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
+	}
 	resp, err := client.Get(endpoint)
 	require.NoError(t, err, "HTTP GET against Grafana endpoint must succeed")
 	defer func() { _ = resp.Body.Close() }()
