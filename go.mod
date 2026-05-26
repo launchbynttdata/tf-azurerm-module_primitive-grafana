@@ -7,7 +7,7 @@ require (
 	github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dashboard/armdashboard v1.2.0
 	github.com/gruntwork-io/terratest v0.43.12
 	github.com/launchbynttdata/lcaf-component-terratest v1.0.4
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
