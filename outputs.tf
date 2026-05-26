@@ -11,31 +11,31 @@
 // limitations under the License.
 
 output "id" {
-  description = "Resource ID of the managed grafana instance"
+  description = "The ID of the managed Grafana instance."
   value       = azurerm_dashboard_grafana.grafana.id
 }
 
 output "name" {
-  description = "Name of the managed grafana instance"
+  description = "The name of the managed Grafana instance."
   value       = azurerm_dashboard_grafana.grafana.name
 }
 
 output "endpoint" {
-  description = "Endpoint of the managed grafana instance"
+  description = "The endpoint URL of the managed Grafana instance."
   value       = azurerm_dashboard_grafana.grafana.endpoint
 }
 
 output "outbound_ip" {
-  description = "Outbound IP of the managed grafana instance if `deterministic_outbound_ip_enabled` is true"
+  description = "List of outbound IP addresses when deterministic_outbound_ip_enabled is true."
   value       = azurerm_dashboard_grafana.grafana.outbound_ip
 }
 
 output "principal_id" {
-  description = "Principal ID of the managed grafana instance"
+  description = "The principal ID of the system-assigned or user-assigned managed identity."
   value       = azurerm_dashboard_grafana.grafana.identity[0].principal_id
 }
 
 output "integrated_workspace_ids" {
-  description = "Azure Monitor workspaces integrated with the grafana instance"
+  description = "List of Azure Monitor workspace resource IDs integrated with this Grafana instance."
   value       = azurerm_dashboard_grafana.grafana.azure_monitor_workspace_integrations[*].resource_id
 }

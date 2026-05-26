@@ -40,11 +40,11 @@ variable "deterministic_outbound_ip_enabled" {
 variable "grafana_major_version" {
   description = "Major version of Grafana to deploy"
   type        = string
-  default     = "10"
+  default     = "12"
 
   validation {
-    condition     = contains(["9", "10"], var.grafana_major_version)
-    error_message = "Major version can be either '9' or '10'"
+    condition     = can(regex("^[0-9]+$", var.grafana_major_version)) && tonumber(var.grafana_major_version) >= 9
+    error_message = "Major version must be a numeric string with a value of 9 or greater."
   }
 }
 
