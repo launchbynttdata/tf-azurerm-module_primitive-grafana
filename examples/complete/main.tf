@@ -62,7 +62,7 @@ module "user_assigned_identity" {
 
 module "role_assignment" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/role_assignment/azurerm"
-  version = "~> 1.0"
+  version = "~> 1.3"
 
   principal_id         = module.user_assigned_identity.principal_id
   role_definition_name = "Monitoring Reader"
