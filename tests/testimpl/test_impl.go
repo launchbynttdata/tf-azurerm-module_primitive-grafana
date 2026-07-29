@@ -39,7 +39,7 @@ func TestGrafana(t *testing.T, ctx types.TestContext) {
 // TestGrafanaReadonly is the read-only post-deploy test. It verifies Terraform
 // outputs and asserts the Azure-managed Grafana resource via the Azure SDK
 // without exercising the data plane or performing any write operations.
-func TestGrafanaReadonly(t *testing.T, ctx types.TestContext) {
+func TestComposableGrafanaReadonly(t *testing.T, ctx types.TestContext) {
 	assertGrafanaConfiguration(t, ctx)
 }
 
