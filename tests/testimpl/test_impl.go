@@ -53,11 +53,11 @@ func assertGrafanaConfiguration(t *testing.T, ctx types.TestContext) {
 
 	opts := ctx.TerratestTerraformOptions()
 
-	resourceId := terraform.Output(t, opts, "id")
-	resourceName := terraform.Output(t, opts, "name")
-	resourceEndpoint := terraform.Output(t, opts, "endpoint")
-	resourceGroupName := terraform.Output(t, opts, "resource_group_name")
-	workspaceIds := terraform.OutputList(t, opts, "integrated_workspace_ids")
+	resourceId := terraform.OutputContext(t, context.Background(), opts, "id")
+	resourceName := terraform.OutputContext(t, context.Background(), opts, "name")
+	resourceEndpoint := terraform.OutputContext(t, context.Background(), opts, "endpoint")
+	resourceGroupName := terraform.OutputContext(t, context.Background(), opts, "resource_group_name")
+	workspaceIds := terraform.OutputListContext(t, context.Background(), opts, "integrated_workspace_ids")
 
 	require.NotEmpty(t, resourceId, "id output must be non-empty")
 	require.NotEmpty(t, resourceName, "name output must be non-empty")
@@ -126,7 +126,7 @@ func assertGrafanaConfiguration(t *testing.T, ctx types.TestContext) {
 // confirm the data plane is reachable. This is the write/exercise step that
 // differentiates the functional test from the readonly test.
 func exerciseGrafanaEndpoint(t *testing.T, ctx types.TestContext) {
-	endpoint := terraform.Output(t, ctx.TerratestTerraformOptions(), "endpoint")
+	endpoint := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "endpoint")
 	require.NotEmpty(t, endpoint, "endpoint output must be present")
 
 	client := &http.Client{Timeout: 30 * time.Second}
